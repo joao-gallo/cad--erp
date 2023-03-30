@@ -18,10 +18,10 @@ namespace backend.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    CPF = table.Column<long>(type: "bigint", nullable: false),
+                    CPF = table.Column<long>(type: "text", nullable: false),
                     Adress = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Phone = table.Column<long>(type: "bigint", nullable: false)
+                    Phone = table.Column<long>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

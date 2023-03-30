@@ -1,3 +1,4 @@
+using backend.Repository;
 using Microsoft.EntityFrameworkCore;
 using user.Data;
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<UserPersistence>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

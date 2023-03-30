@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using user.Data;
 
 #nullable disable
@@ -37,7 +35,7 @@ namespace backend.Migrations
                         .HasColumnType("text");
 
                     b.Property<long>("CPF")
-                        .HasColumnType("bigint");
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -48,7 +46,7 @@ namespace backend.Migrations
                         .HasColumnType("text");
 
                     b.Property<long>("Phone")
-                        .HasColumnType("bigint");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
