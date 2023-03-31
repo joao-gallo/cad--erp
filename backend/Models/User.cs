@@ -6,6 +6,7 @@ namespace backend.Models
         public string Name { get; set; }
         public string CPF { get; set; }
         public string Adress { get; set; }
+        public string Adress2 { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
     }

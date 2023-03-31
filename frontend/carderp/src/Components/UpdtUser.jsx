@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function UpdtUser() {
@@ -31,23 +32,30 @@ function UpdtUser() {
     }
 
     return (
-        <div>
+        <main>
             <fieldset>
-                <label>Id:</label>
-                <input type="text" value={id} onChange={(e) => setId(e.target.value)} required />
-                <label htmlFor="name">Nome:</label>
-                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                <label htmlFor="cpf">CPF:</label>
-                <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                <label htmlFor="adress">Endereço:</label>
-                <input type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="phone">Telefone:</label>
-                <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                <button onClick={updateUser}>Atualizar Usuário</button>
+                <fieldset>
+                    <label>Id:</label>
+                    <input type="text" value={id} onChange={(e) => setId(e.target.value)} required />
+                    <label htmlFor="name">Nome:</label>
+                    <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="cpf">CPF:</label>
+                    <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+                    <label htmlFor="adress">Endereço:</label>
+                    <input type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label htmlFor="phone">Telefone:</label>
+                    <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <button onClick={updateUser}>Atualizar Usuário</button>
+                </fieldset>
             </fieldset>
-        </div>
+            <fieldset><Link to='/'>Home</Link></fieldset>
+        </main>
     );
 }
 export default UpdtUser

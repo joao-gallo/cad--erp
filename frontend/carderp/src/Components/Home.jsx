@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        <div>
-            oi
-            <h1>home</h1>
+        <fieldset><div>
+            <h1>Início</h1>
             <a href=""></a>
-            <h3>
-                <Link to='/user'>Users</Link>
-            </h3>
-        </div>
+            <fieldset><h3>
+                <fieldset><Link to='/user'>Informações de usuários</Link></fieldset>
+                <fieldset><Link to='/update'>Atualizar Cadastro</Link></fieldset>
+                <fieldset><Link to='/Register'>Registrar</Link></fieldset>
+            </h3></fieldset>
+        </div></fieldset>
     )
 }
 

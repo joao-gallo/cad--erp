@@ -6,6 +6,22 @@ function ShowUsers() {
     const userUrl = "https://localhost:7143/api/User";
 
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    async function fetchData() {
+        setIsLoading(true);
+
+        try {
+            const response = await fetch(userUrl);
+            const data = await response.json();
+
+            // restante do código para processar os dados da API
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
 
     const rotaGet = async () => {
         try {
@@ -18,31 +34,29 @@ function ShowUsers() {
 
     useEffect(() => {
         rotaGet();
+        fetchData();
     }, []);
 
     return (
-        <div>
-            {data.map((user) => (
-                <span key={user.id}>
-                    <a>{user.id}</a>
-                    <br />
-                    <a>{user.name}</a>
-                    <br />
-                    <a>{user.cpf}</a>
-                    <br />
-                    <a>{user.adress}</a>
-                    <br />
-                    <a>{user.email}</a>
-                    <br />
-                    <a>{user.phone}</a>
-                    <br />
-                    <br />
-                </span>
-            ))}
-            <br />
-            <h3>
-                <Link to='/'>Voltar</Link>
-            </h3>
+        <div className="user">
+            {isLoading ? <h2>Carregando...</h2> : null}
+            {<div>
+                {data.map((user) => (
+                    <fieldset>
+                        <h3>{user.name}</h3>
+                        <ul key={user.id}>
+                            <li>Id: {user.id}</li>
+                            <li>CPF: {user.cpf}</li>
+                            <li>Endereço: {user.adress}</li>
+                            <li>Endereço 2: {user.adress2}</li>
+                            <li>Email: {user.email}</li>
+                            <li>Telefone: {user.phone}</li>
+                        </ul></fieldset>
+                ))}
+                <h3>
+                </h3>
+            </div>}
+            <Link to='/'>Início</Link>
         </div>
     );
 }
