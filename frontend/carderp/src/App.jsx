@@ -4,6 +4,7 @@ import ShowUsers from "./Components/ShowUsers";
 import Home from "./Components/Home";
 import UpdtUser from "./Components/UpdtUser";
 import Register from "./Components/Register";
+import Login from "./Components/Login";
 import './App.css'
 
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route exact path="/login" Component={Login} />
         <Route exact path="/" Component={Home} />
         <Route exact path="/user" Component={ShowUsers} />
         <Route exact path="/register" Component={Register} />

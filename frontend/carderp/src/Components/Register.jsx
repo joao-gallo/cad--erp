@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -12,6 +12,8 @@ function Register() {
     const [email, setEmail] = useState("");
     const [emailValido, setEmailValido] = useState(true);
     const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordValido, setPasswordValido] = useState("");
 
     const handleChange = async (event) => {
         setName(event.target.value);
@@ -24,9 +26,18 @@ function Register() {
         return regex.test(email);
     };
 
+    const validarSenha = (senha) => {
+        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+        return regex.test(senha);
+    };
+
 
     const handleEmailBlur = () => {
         setEmailValido(validarEmail(email));
+    };
+
+    const handleSenhaBlur = () => {
+        setPasswordValido(validarSenha(password));
     };
 
     const handleRegister = async () => {
@@ -37,6 +48,7 @@ function Register() {
             adress2: adress2,
             email: email,
             phone: phone,
+            password: password,
         };
         await axios.post("https://localhost:7143/api/User", userData)
             .then(response => {
@@ -45,7 +57,7 @@ function Register() {
             .catch(error => {
                 console.log(error);
             });
-
+        useEffect(handleChange)
     };
 
     return (
@@ -112,6 +124,23 @@ function Register() {
                         onChange={(e) => setPhone(e.target.value)}
                     />
                     {phone.length < 11 && phone.length > 1 && <p className="validation">Telefone precisa de DDD</p>}
+                    <fieldset>
+                        <label>
+                            Senha:
+                            <input
+                                type="text"
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                onBlur={handleSenhaBlur}
+                            />
+                            {!passwordValido && password.length > 0 && (
+                                <p className="validation">
+                                    A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um caractere especial.
+                                </p>
+                            )}
+                        </label>
+                    </fieldset>
                     <button onClick={handleRegister} disabled={
                         name.length < 4
                         || cpf.length < 11
@@ -119,6 +148,7 @@ function Register() {
                         || adress == adress2
                         || !emailValido
                         || phone < 11
+
                     }>Criar Usuário</button>
                 </fieldset>
             </fieldset>

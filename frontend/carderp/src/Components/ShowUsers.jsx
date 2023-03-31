@@ -42,10 +42,9 @@ function ShowUsers() {
             {isLoading ? <h2>Carregando...</h2> : null}
             {<div>
                 {data.map((user) => (
-                    <fieldset>
+                    <fieldset key={user.id}>
                         <h3>{user.name}</h3>
-                        <ul key={user.id}>
-                            <li>Id: {user.id}</li>
+                        <ul>
                             <li>CPF: {user.cpf}</li>
                             <li>Endereço: {user.adress}</li>
                             <li>Endereço 2: {user.adress2}</li>

@@ -14,6 +14,7 @@ namespace backend.Repository
         }
         public void AddUser(User user)
         {
+            user.SetPasswordHash();
             _persistence.Add(user);
         }
 
@@ -40,6 +41,17 @@ namespace backend.Repository
         public void UpdtUser(User user)
         {
             _persistence.Update(user);
+        }
+
+        public static User Get(string email, string password)
+        {
+            var users = new List<User>
+            {
+            new() {Id = 1, Email = "test@teste.com", Password = "Senha1!"}
+        };
+            return users.FirstOrDefault(x =>
+            x.Email == email
+            && x.Password == password);
         }
     }
 }
