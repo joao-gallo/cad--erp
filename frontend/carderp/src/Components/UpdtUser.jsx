@@ -32,30 +32,74 @@ function UpdtUser() {
     }
 
     return (
-        <main>
-            <fieldset>
-                <fieldset>
-                    <label>Id:</label>
-                    <input type="text" value={id} onChange={(e) => setId(e.target.value)} required />
-                    <label htmlFor="name">Nome:</label>
-                    <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="cpf">CPF:</label>
-                    <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                    <label htmlFor="adress">Endereço:</label>
-                    <input type="text" id="adress" value={adress} onChange={(e) => setAdress(e.target.value)} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <label htmlFor="phone">Telefone:</label>
-                    <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                    <button onClick={updateUser}>Atualizar Usuário</button>
-                </fieldset>
-            </fieldset>
-            <fieldset><Link to='/'>Home</Link></fieldset>
-        </main>
+        <form className="form-signin">
+            <section className="form-floating">
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)} required
+                        placeholder="Id"
+                    />
+                    <label htmlFor="floatingInput">Id</label>
+                </section>
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Nome" />
+                    <label htmlFor="floatingInput">Nome</label>
+                </section>
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="cpf"
+                        value={cpf}
+                        onChange={(e) => setCpf(e.target.value)}
+                        placeholder="CPF" />
+                    <label htmlFor="floatingInput">CPF</label>
+                </section>
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="adress"
+                        value={adress}
+                        onChange={(e) => setAdress(e.target.value)}
+                        placeholder="Endereço" />
+                    <label htmlFor="floatingInput">Endereço</label>
+                </section>
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email" />
+                    <label htmlFor="floatingInput">Email</label>
+                </section>
+                <section className="form-floating">
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Telefone" />
+                    <label htmlFor="floatingInput">Telefone</label>
+                    <section className="botao">
+                        <button onClick={updateUser} className="w-100 btn btn-lg btn-primary">Atualizar Usuário</button>
+                    </section>
+                </section>
+            </section>
+            <section><Link to='/'>Home</Link></section>
+        </form>
     );
 }
 export default UpdtUser

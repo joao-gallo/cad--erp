@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 function Home() {
     const emailInfo = localStorage.getItem('nome')
     return (
-        <fieldset><div>
+        <div className="home-main">
             <h1>Início</h1>
-            <h3>Bem vindo, {emailInfo}! O que deseja fazer hoje?</h3>
+            <h3 className="greetings">Bem vindo, {emailInfo}! O que deseja fazer hoje?</h3>
             <a href=""></a>
-            <fieldset><h3>
-                <fieldset><Link to='/user'>Informações de usuários</Link></fieldset>
-                <fieldset><Link to='/update'>Atualizar Cadastro</Link></fieldset>
-                <fieldset><Link to='/Register'>Registrar</Link></fieldset>
-            </h3></fieldset>
-        </div></fieldset>
+            <h4 className="links-home">
+                <Link to='/user' className="link">Informações de usuários</Link>
+                <Link to='/update' className="link">Atualizar Cadastro</Link>
+            </h4>
+            <Link to='login' className="different">Login</Link>
+        </div>
     )
 }
 
