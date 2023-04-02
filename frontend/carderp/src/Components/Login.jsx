@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
-    const history = useNavigate();
+    const navigate = useNavigate();
+
+    const [nome, setNome] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,9 +21,10 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('https://localhost:7143/api/auth', { email, password });
+            const response = await axios.put(`https://localhost:7143/api/User/${email}?password=${password}`, email, password);
             localStorage.setItem('token', response.data.token);
-            history.push('/dashboard');
+            localStorage.setItem('nome', nome);
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
@@ -31,6 +34,10 @@ function Login() {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
+                <label>
+                    Name:
+                    <input type="text" name="nome" value={nome} onChange={(e) => setNome(e.target.value)} required />
+                </label>
                 <label>
                     Email:
                     <input type="email" name="email" value={email} onChange={handleChange} required />
