@@ -1,4 +1,4 @@
-using backend.Helper;
+/* using backend.Helper; */
 
 namespace backend.Models
 {
@@ -13,9 +13,9 @@ namespace backend.Models
         public string Phone { get; set; }
         public string Password { get; set; }
 
-        public void SetPasswordHash()
-        {
-            Password = Password.HashCreator();
-        }
+        /*         public void SetPasswordHash()
+                {
+                    Password = Password.HashCreator();
+                } */
     }
 }

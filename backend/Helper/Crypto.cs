@@ -1,4 +1,4 @@
-using System.Security.Cryptography;
+/* using System.Security.Cryptography;
 using System.Text;
 
 namespace backend.Helper
@@ -21,4 +21,4 @@ namespace backend.Helper
             return strHexa.ToString();
         }
     }
-}
+} */

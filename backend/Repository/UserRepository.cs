@@ -14,7 +14,7 @@ namespace backend.Repository
         }
         public void AddUser(User user)
         {
-            user.SetPasswordHash();
+            /*           user.SetPasswordHash(); */
             _persistence.Add(user);
         }
 
@@ -38,20 +38,14 @@ namespace backend.Repository
             return await _persistence.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<User> GetByEmail(string email, string password)
+        {
+            return await _persistence.Users.Where(x => x.Email == email && x.Password == password).FirstOrDefaultAsync();
+        }
+
         public void UpdtUser(User user)
         {
             _persistence.Update(user);
-        }
-
-        public static User Get(string email, string password)
-        {
-            var users = new List<User>
-            {
-            new() {Id = 1, Email = "test@teste.com", Password = "Senha1!"}
-        };
-            return users.FirstOrDefault(x =>
-            x.Email == email
-            && x.Password == password);
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Service
 {
-    public static class TokenService
+    public class TokenService
     {
         public static string GenerateToken(User user)
         {
@@ -21,7 +21,7 @@ namespace backend.Service
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, user.Email)
+                    new Claim(ClaimTypes.Name, user.Email),
                 }),
                 Expires = DateTime.UtcNow.AddHours(8),
                 SigningCredentials = new SigningCredentials(
