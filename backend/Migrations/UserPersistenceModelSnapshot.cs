@@ -33,6 +33,10 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Adress2")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("text");
@@ -45,7 +49,15 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Token")
                         .IsRequired()
                         .HasColumnType("text");
 
